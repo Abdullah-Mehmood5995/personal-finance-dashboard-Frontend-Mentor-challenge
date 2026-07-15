@@ -1,0 +1,782 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    background: rgb(248, 243, 243);
+    /* padding-bottom: 80px; */
+}
+
+p {
+    letter-spacing: 1.2px;
+}
+
+a {
+    font-family: "Public Sans", sans-serif;
+    text-decoration: none;
+    color: black;
+}
+
+/* checkbox start */
+
+.label-icons {
+    position: fixed;
+    z-index: 2;
+    left: 2%;
+    bottom: 10%;
+
+    & span {
+        color: white;
+        font-size: 1.5rem;
+    }
+}
+
+#check:checked~.grid-container {
+    grid-template-columns: minmax(50px, 50px) 1fr 1fr;
+    transition: 0.5s ease;
+}
+
+#check:checked~.grid-container .aside {
+    width: 5rem;
+    transition: all 0.3s linear;
+    -webkit-transition: all 0.3s linear;
+    -moz-transition: all 0.3s linear;
+    -ms-transition: all 0.3s linear;
+    -o-transition: all 0.3s linear;
+}
+
+#check:checked~.grid-container .aside .parent .logo {
+    opacity: 0;
+    transition: 0.5s ease;
+    width: 0;
+}
+
+#check:checked~.grid-container .aside .parent .sub-parent {
+    justify-content: flex-start;
+    padding-left: 1rem;
+}
+
+#check:checked~.grid-container .aside .parent .sub-parent {
+    padding-right: 0;
+}
+
+#check:checked~.grid-container .aside .parent .sub-parent .name {
+    display: none;
+    transition: 0.5s ease;
+}
+
+#check:checked~.label-icons span {
+    display: none;
+    transition: 0.5s ease;
+}
+
+#check:checked~.label-icons {
+    left: 0.7%;
+    transition: 0.5s ease;
+
+}
+
+input {
+    display: none;
+}
+
+
+/* grid container positioning assigning */
+
+.grid-container {
+    display: grid;
+    grid-template-columns: minmax(50px, 270px) 1fr 1fr;  
+    grid-template-rows: 12rem 12rem minmax(200px, 365px) minmax(140px, 140px) 1fr 1fr;
+
+    grid-template-areas:
+
+        "aside  overview       overview"
+        "aside  sale           sale "
+        "aside  pots           budgets"
+        "aside  transactions   budgets"
+        "aside  transactions   recurring-bills"
+        "aside  transactions   recurring-bills";
+
+    .aside {
+        grid-area: aside;
+    }
+
+    .overview {
+        grid-area: overview;
+    }
+
+    .sale {
+        grid-area: sale;
+    }
+
+    .pots {
+        grid-area: pots;
+    }
+
+    .budgets {
+        grid-area: budgets;
+    }
+
+    .transactions {
+        grid-area: transactions;
+    }
+
+    .recurring-bills {
+        grid-area: recurring-bills;
+    }
+}
+
+/* grid container start */
+
+.grid-container {
+    margin-right: 3rem;
+    gap: 2rem;
+
+    & .aside {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 3rem 0;
+        width: 30rem;
+        height: 100vh;
+        position: fixed;
+        z-index: 1;
+        background-color: black;
+
+        & .parent {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            width: 23rem;
+
+            & .logo {
+                img {
+                    width: 13rem;
+                    padding-left: 2rem;
+                    padding-bottom: 4rem;
+                    color: white;
+                }
+            }
+
+            & .sub-parent {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 2rem;
+                font-size: 1.5rem;
+                font-weight: bold;
+
+                & .icon {
+                    img {
+                        width: 2rem;
+                    }
+                }
+
+                & .name {
+                    a {
+                        display: inline-block;
+                        width: 13rem;
+                        color: white;
+                    }
+                }
+            }
+        }
+
+        & .parent-2 {
+            display: flex;
+            justify-content: center;
+            width: 23rem;
+
+            input {
+                display: none;
+            }
+
+            span {
+                color: white;
+                font-size: 2rem;
+            }
+
+        }
+    }
+
+    & .overview {
+        align-content: center;
+
+        h1 {
+            font-size: 4rem;
+        }
+    }
+
+    & .sale {
+        align-content: center;
+        display: flex;
+        gap: 1rem;
+
+        & .parent {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 1.1rem;
+            font-size: 2rem;
+            padding-left: 2rem;
+            background-color: white;
+            box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+            border-radius: 1.5rem;
+            -webkit-border-radius: 1.5rem;
+            -moz-border-radius: 1.5rem;
+            -ms-border-radius: 1.5rem;
+            -o-border-radius: 1.5rem;
+        }
+
+        & .parent:first-child {
+            background-color: black;
+            color: white;
+        }
+    }
+
+    & .pots {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        background-color: white;
+        border-radius: 1rem;
+        padding: 3rem;
+        box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+
+        & .pts {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 1.5rem;
+        }
+
+
+        & .pots-cnt {
+            display: flex;
+            align-items: center;
+            gap: 5rem;
+
+            & .total-saved {
+                display: flex;
+                align-items: center;
+                flex-grow: 1;
+                gap: 2rem;
+                padding: 1.8rem;
+                background: #EBEBEB;
+                font-size: 1.5rem;
+                border-radius: 1.5rem;
+                -webkit-border-radius: 1.5rem;
+                -moz-border-radius: 1.5rem;
+                -ms-border-radius: 1.5rem;
+                -o-border-radius: 1.5rem;
+
+                img {
+                    width: 3rem;
+                    filter: brightness(0) saturate(100%) invert(26%) sepia(96%) saturate(7496%) hue-rotate(85deg) brightness(80%) contrast(90%);
+                    -webkit-filter: brightness(0) saturate(100%) invert(26%) sepia(96%) saturate(7496%) hue-rotate(85deg) brightness(80%) contrast(90%);
+                }
+
+                & .ratio {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 1rem;
+                }
+            }
+
+            & .only-saving {
+                display: flex;
+                gap: 2rem;
+                font-size: 1rem;
+
+                & .saving {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 2rem;
+                    white-space: nowrap;
+
+                    & .sv-child {
+                        border-left: 0.4rem solid green;
+                        padding-left: 0.5rem;
+                        padding-bottom: 1.5rem;
+                    }
+
+                    & .sv-child:nth-child(2) {
+                        border-left: 0.4rem solid gray;
+                        padding-left: 0.5rem;
+                        padding-bottom: 1.5rem;
+                    }
+
+                    p {
+                        font-size: 1.3rem;
+                    }
+                }
+
+                & .saving-2 {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 2rem;
+                    white-space: nowrap;
+
+                    & .sv-child {
+                        border-left: 0.4rem solid #0BA6DF;
+                        padding-left: 0.5rem;
+                        padding-bottom: 1.5rem;
+                    }
+
+                    & .sv-child:nth-child(2) {
+                        border-left: 0.4rem solid #FAA533;
+                        padding-left: 0.5rem;
+                        padding-bottom: 1.5rem;
+                    }
+
+                    p {
+                        font-size: 1.3rem;
+                    }
+                }
+            }
+        }
+    }
+
+    & .budgets {
+        display: flex;
+        flex-direction: column;
+        gap: 5rem;
+        padding: 3rem;
+        background-color: white;
+        border-radius: 1rem;
+        box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+
+        & .bud {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 1.5rem;
+        }
+
+        & .budget-cnt {
+            display: flex;
+            align-items: center;
+            justify-content: right;
+            gap: 12rem;
+
+
+            & .chart-circle {
+                width: 250px;
+                height: 250px;
+                border-radius: 50%;
+                background: conic-gradient(#0BA6DF 0% 70%,
+                        #FAA533 70% 80%,
+                        gray 80% 90%,
+                        green 90% 100%);
+
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                position: relative;
+
+                & .center {
+                    z-index: 999;
+                    font-size: 2rem;
+                    position: relative;
+
+                    h1 {
+                        font-size: 3.1rem;
+                    }
+
+                    & p {
+                        text-align: center;
+                        font-size: 1.5rem;
+                    }
+                }
+            }
+
+            & .chart-circle::before {
+                content: "";
+                position: absolute;
+                width: 170px;
+                height: 170px;
+                border-radius: 50%;
+                background: #fff;
+                z-index: 2;
+            }
+
+            & .chart-circle::after {
+                content: "";
+                position: absolute;
+                width: 200px;
+                height: 200px;
+                border-radius: 50%;
+                z-index: 1;
+                background: conic-gradient(#74b3c9 0% 70%,
+                        #e0b277 70% 80%,
+                        rgb(201, 191, 191) 80% 90%,
+                        rgb(108, 186, 108) 90% 100%);
+            }
+
+            & .total-cost {
+                display: grid;
+                grid-template-rows: repeat(4);
+                gap: 2rem;
+                white-space: nowrap;
+
+                p {
+                    font-size: 1.3rem;
+                }
+
+
+                & .entertain {
+                    border-left: 0.4rem solid green;
+                    padding-left: 0.5rem;
+                    padding-bottom: 1.5rem;
+                }
+
+                & .bill {
+                    border-left: 0.4rem solid #0BA6DF;
+                    padding-left: 0.5rem;
+                    padding-bottom: 1.5rem;
+                }
+
+                & .dining {
+                    border-left: 0.4rem solid #FAA533;
+                    padding-left: 0.5rem;
+                    padding-bottom: 1.5rem;
+                }
+
+                & .personal {
+                    border-left: 0.4rem solid gray;
+                    padding-left: 0.5rem;
+                    padding-bottom: 1.5rem;
+                }
+            }
+        }
+    }
+
+    & .transactions {
+        display: flex;
+        flex-direction: column;
+        padding: 3rem;
+        background-color: white;
+        border-radius: 1rem;
+        box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+
+        & .trans {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 1.5rem;
+            padding-bottom: 3rem;
+        }
+
+        & .transaction-cnt {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 0.1rem solid rgb(221, 211, 211);
+            padding: 2rem 0;
+
+            & .identity {
+                display: flex;
+                align-items: center;
+                gap: 2rem;
+
+                & img {
+                    width: 4.5rem;
+                    height: 4.5rem;
+                    border-radius: 50%;
+                }
+            }
+
+            & .amount-date {
+                display: flex;
+                flex-direction: column;
+                gap: .5rem;
+
+                p {
+                    font-size: 1.5rem;
+                    opacity: 0.7;
+                }
+            }
+        }
+
+        & .transaction-cnt:last-child {
+            border: none;
+        }
+    }
+
+    & .recurring-bills {
+        display: flex;
+        flex-direction: column;
+        padding: 3rem;
+        background-color: white;
+        box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+        border-radius: 1rem;
+        -webkit-border-radius: 1rem;
+        -moz-border-radius: 1rem;
+        -ms-border-radius: 1rem;
+        -o-border-radius: 1rem;
+
+        & .recu {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 1.5rem;
+            padding-bottom: 3rem;
+        }
+
+        & .recurring-cnt {
+            display: flex;
+            flex-direction: column;
+            padding: 2rem 0;
+            gap: 2rem;
+
+            & .bills-detail {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 2rem;
+                background-color: #EBEBEB;
+                border-top-left-radius: 1rem;
+                border-bottom-left-radius: 1rem;
+
+                p {
+                    font-size: 1.5rem;
+                    opacity: 0.7;
+                }
+
+            }
+
+            & .bills-detail:first-child {
+                border-left: 0.4rem solid green;
+
+            }
+
+            & .bills-detail:nth-child(2) {
+                border-left: 0.4rem solid #FAA533;
+            }
+
+            & .bills-detail:last-child {
+                border-left: 0.4rem solid #0BA6DF;
+            }
+        }
+    }
+}
+
+/* grid-container END */
+
+/* Bottom navbar */
+
+.navbar {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: 999;
+
+    & .parent {
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        background-color: black;
+        padding: 1rem 0;
+
+        & .sub-parent {
+            font-size: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 2rem;
+            border-top-left-radius: 1rem;
+            border-top-right-radius: 1rem;
+
+
+
+            & .name {
+                a {
+                    color: white;
+                    font-weight: bold;
+                }
+            }
+        }
+
+        & .sub-parent:hover {
+            background-color: white;
+            color: white;
+
+            & .name {
+                a {
+                    color: black;
+                }
+            }
+        }
+
+    }
+}
+
+
+/* breakpoints */
+
+@media(width <=1240px) {
+    html {
+        font-size: 52.5%;
+    }
+
+    .grid-container {
+        grid-template-columns: minmax(210px, 1fr) 3fr 3fr;
+
+        & .aside{
+            width: 18rem;
+        }
+
+        & .pots {
+            & .pots-cnt {
+                flex-direction: column;
+                align-items: flex-start;
+
+                & .total-saved {
+                    width: 100%;
+                }
+            }
+        }
+
+        & .budgets {
+            & .budget-cnt {
+                justify-content: center;
+                gap: 4rem;
+            }
+        }
+    }
+}
+
+@media(width <=1080px) {
+
+    .label-icons {
+        display: none;
+    }
+
+    .navbar {
+        display: block;
+    }
+
+    .grid-container {
+        margin-left: 3rem;
+        grid-template-rows: 12rem 12rem 30rem minmax(30rem, 60rem) 50rem 50rem;
+        grid-template-columns: 1fr;
+
+        grid-template-areas:
+
+            "overview"
+            "sale"
+            "pots"
+            "transactions"
+            "budgets"
+            "recurring-bills"
+    }
+}
+
+@media(width <=1080px) {
+    .grid-container {
+        & .aside {
+            display: none;
+        }
+
+        & .pots {
+            & .pots-cnt {
+                flex-direction: row;
+                align-items: center;
+
+                & .only-saving {
+                    gap: 20rem;
+                }
+            }
+        }
+
+        & .budgets {
+            & .budget-cnt {
+                gap: 27rem;
+                justify-content: flex-end;
+
+            }
+        }
+    }
+}
+
+@media(width <=672px) {
+
+    .navbar {
+        position: fixed;
+        /* bottom: 12%; */
+
+        & .parent {
+            justify-content: space-evenly;
+
+            & .sub-parent {
+                & .name {
+                    display: none;
+                }
+            }
+        }
+    }
+
+
+    .grid-container {
+        margin: 0 1rem;
+        margin-bottom: 7rem;
+        grid-template-rows: minmax(100px, 120px) minmax(100px, 378px) minmax(100px, 360px) minmax(100px, 530px) minmax(100px, 1fr) minmax(100px, 350px);
+
+        & .sale {
+            flex-direction: column;
+
+            & .parent {
+                flex-grow: 0;
+                padding: 2rem;
+            }
+        }
+
+        & .pots {
+            & .pots-cnt {
+                flex-direction: column;
+                align-items: flex-start;
+
+                & .only-saving {
+                    gap: 15rem;
+                }
+
+            }
+        }
+    }
+
+
+    & .budgets {
+        & .budget-cnt {
+            flex-direction: column;
+            gap: 0 !important;
+
+            & .total-cost {
+                padding-top: 5rem;
+                align-self: flex-start;
+                grid-template-columns: 1fr 1fr;
+                gap: 3rem;
+
+                & .entertain {
+                    padding-right: 10rem;
+                }
+            }
+        }
+    }
+}
+
+@media(width <=388px) {
+    html {
+        font-size: 49%;
+    }
+}
